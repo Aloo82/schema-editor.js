@@ -3,8 +3,32 @@
 <head lang="en">
   <meta charset="UTF-8">
   <title></title>
+  <link href="css/jquery-ui.min.css" rel="stylesheet"/>
+  <script data-main="js/app.js" src="js/require.js"></script>
 </head>
 <body>
+
+<form>
+  <label for="target">JSON Object</label>
+  <textarea id="target" data-ui-objecteditor>
+{
+  "array": [
+    1,
+    2,
+    3
+  ],
+  "boolean": true,
+  "null": null,
+  "number": 123,
+  "object": {
+    "a": "b",
+    "c": "d",
+    "e": "f"
+  },
+  "string": "Hello World"
+}
+  </textarea>
+</form>
 
 </body>
 </html>
