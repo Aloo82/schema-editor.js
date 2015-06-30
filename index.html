@@ -5,12 +5,18 @@
   <title></title>
   <link href="css/jquery-ui.min.css" rel="stylesheet"/>
   <script data-main="js/app.js" src="js/require.js"></script>
+  <style>
+    textarea {
+      width: 300px;
+      height: 300px;
+    }
+  </style>
 </head>
 <body>
 
 <form>
   <label for="target">JSON Object</label>
-  <textarea id="target" data-ui-objecteditor>
+  <textarea id="target" data-schema-editor data-options="show-output:true">
 {
   "array": [
     1,
