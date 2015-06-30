@@ -117,7 +117,9 @@
   filter: alpha(opacity=$opacity-ie); //IE8
 }
 
-@mixin center-block {
+@mixin center-block($width) {
+  width: $width;
+  max-width: $width;
   float:none;
   display: block;
   margin-left: auto;

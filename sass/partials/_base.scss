@@ -1,22 +1,25 @@
 $outer-container: "schema-editor";
+$inner-container: "view-port";
 //$dl: "editable data-value";
 $bg-white: "data-value";
 
 
-
-dl.editable{
-  @include row(100%, table);
-  @extend %column-12;
+.#{$outer-container},
+.#{$inner-container}{
+  @include border-style('left');
 }
 
 /*-------------------------------------------*/
 
 .#{$outer-container}{
-  max-width: 40%;
-  @include center-block;
-  *{
-    @include border-style('left');
-  }
+   $width: 80%;
+  @extend %float-left;
+   @include center-block($width);
+}
+.#{$inner-container},
+textarea{
+  $width: 50%;
+  @extend %float-left;
 }
 
 .#{$outer-container}{
@@ -31,17 +34,13 @@ dl.editable{
 
 .#{$outer-container}{
   @include row(100%, table);
-  @extend %column-6;
+//  @extend %column-6;
   @include breakpoint(mobileonly){
     //    unable to include extensions here
   }
   @extend %float-left;
   min-height: 250px;
   background-color: transparentize($blue, 0.85);
-  select,
-  a[data-action]{
-    @extend %column-4;
-  }
 }
 
 
@@ -70,23 +69,74 @@ input.#{$bg-white} {
 
 textarea{
   @extend %column-12;
+  min-height: 50vh;
 }
 
 
 
-ol{
-  li{
-    @extend %column-4;
-    @extend %float-left;
-    input,
-    div select,
-    div a{
-      @extend %column-12;
+//ol{
+//  li{
+//    @extend %column-4;
+//    @extend %float-left;
+//    input,
+//    div select,
+//    div a{
+//      @extend %column-12;
+//    }
+//  }
+//}
+
+$var: 2 !default;
+dt:nth-of-type(#{$var}){
+  background-color: red;
+}
+
+
+
+/*-------------- FLEXBOX -----------------*/
+
+.#{$inner-container} {
+
+}
+
+dl{
+  @include flexbox;
+  @include flex-wrap(wrap);
+  + dt,
+  + dd{
+    @include flex-direction(row);
+    @include order(0);
+    @include flex-grow(3);
+    @include flex-basis(100%);
+    @include align-items( stretch );
+    input{
+      @include flexbox;
+      @include align-items( stretch );
+    }
+
+    ol{
+      @include flex-direction(row);
+      @include order(0);
+      li{
+        @include flex-grow(3);
+        @include align-items( stretch );
+      }
     }
   }
 }
 
 
-dt:nth-of-type  (){
 
+/*-------------- SELECTORS -----------------*/
+
+dt.editable,
+li.editable{
+  > div{
+    select,
+    a{
+      @extend %column-12;
+      display: block;
+      clear: both;
+    }
+  }
 }

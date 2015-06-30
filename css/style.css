@@ -1,63 +1,712 @@
-/*
-Error: Invalid CSS after "dt:nth-of-type  ": expected selector, was "()"
-        on line 90 of sass/partials/_base.scss
-        from line 4 of sass/style.scss
+:root {
+  box-sizing: border-box;
+  cursor: default;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, "Lucida Grande", sans-serif;
+  line-height: 1.4;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  overflow-y: scroll;
+  text-rendering: optimizeLegibility;
+  text-size-adjust: 100%; }
 
-Backtrace:
-sass/partials/_base.scss:90
-sass/style.scss:4
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/scss/parser.rb:1165:in `expected'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/scss/parser.rb:1101:in `expected'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/scss/static_parser.rb:21:in `parse_selector'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:414:in `visit_rule'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/stack.rb:79:in `block in with_base'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/stack.rb:79:in `with_base'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:315:in `block (2 levels) in visit_import'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:315:in `map'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:315:in `block in visit_import'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/stack.rb:88:in `block in with_import'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/stack.rb:88:in `with_import'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:312:in `visit_import'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/stack.rb:79:in `block in with_base'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/stack.rb:79:in `with_base'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `map'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `visit_children'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `block in visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:157:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:8:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/tree/root_node.rb:36:in `css_tree'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/engine.rb:368:in `_render_with_sourcemap'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/engine.rb:285:in `render_with_sourcemap'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/plugin/compiler.rb:490:in `update_stylesheet'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/plugin/compiler.rb:209:in `each'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/plugin/compiler.rb:470:in `on_file_changed'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.4.9/lib/sass/plugin/compiler.rb:328:in `block in watch'
-/Library/Ruby/Gems/2.0.0/gems/listen-2.7.7/lib/listen/listener.rb:275:in `call'
-/Library/Ruby/Gems/2.0.0/gems/listen-2.7.7/lib/listen/listener.rb:275:in `_process_changes'
-/Library/Ruby/Gems/2.0.0/gems/listen-2.7.7/lib/listen/listener.rb:233:in `block in _wait_for_changes'
-/Library/Ruby/Gems/2.0.0/gems/listen-2.7.7/lib/listen/listener.rb:216:in `loop'
-/Library/Ruby/Gems/2.0.0/gems/listen-2.7.7/lib/listen/listener.rb:216:in `_wait_for_changes'
-/Library/Ruby/Gems/2.0.0/gems/listen-2.7.7/lib/listen/listener.rb:310:in `block in _start_wait_thread'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: Invalid CSS after \"dt:nth-of-type  \": expected selector, was \"()\"\A         on line 90 of sass/partials/_base.scss\A         from line 4 of sass/style.scss"; }
+audio:not([controls]) {
+  display: none; }
+
+details {
+  display: block; }
+
+input[type="number"] {
+  width: auto; }
+input[type="search"] {
+  -webkit-appearance: textfield; }
+  input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none; }
+
+main {
+  display: block; }
+
+summary {
+  display: block; }
+
+pre {
+  overflow: auto; }
+
+progress {
+  display: inline-block; }
+
+small {
+  font-size: 75%; }
+
+big {
+  font-size: 125%; }
+
+template {
+  display: none; }
+
+textarea {
+  overflow: auto;
+  resize: vertical; }
+
+[hidden] {
+  display: none; }
+
+[unselectable] {
+  user-select: none; }
+
+*,
+::before,
+::after {
+  border-style: solid;
+  border-width: 0;
+  box-sizing: inherit; }
+
+* {
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+  padding: 0; }
+
+::before,
+::after {
+  text-decoration: inherit;
+  vertical-align: inherit; }
+
+a {
+  text-decoration: none; }
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle; }
+
+button, .schema-editor a,
+input,
+select,
+textarea {
+  background-color: transparent;
+  border: 0.1rem solid #ccc;
+  color: inherit;
+  font-family: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  min-height: 1.4em; }
+
+code,
+kbd,
+pre,
+samp {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace, monospace; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+::selection {
+  background-color: #b3d4fc;
+  text-shadow: none; }
+
+button::-moz-focus-inner, .schema-editor a::-moz-focus-inner {
+  border: 0; }
+
+@media screen {
+  [hidden~="screen"] {
+    display: inherit; }
+
+  [hidden~="screen"]:not(:active):not(:focus):not(:target) {
+    clip: rect(0 0 0 0) !important;
+    position: absolute !important; } }
+body {
+  color: #444;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, "Lucida Grande", sans-serif;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400; }
+
+p {
+  margin: 0 0 1.6rem; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Lato", "Open Sans", "Helvetica Neue", Helvetica, "Lucida Grande", sans-serif;
+  margin: 2rem 0 1.6rem; }
+
+h1 {
+  border-bottom: 0.1rem solid rgba(0, 0, 0, 0.2);
+  font-size: 3.6rem;
+  font-style: normal;
+  font-weight: 500; }
+
+h2 {
+  font-size: 3rem;
+  font-style: normal;
+  font-weight: 500; }
+
+h3 {
+  font-size: 2.4rem;
+  font-style: normal;
+  font-weight: 500;
+  margin: 1.6rem 0 0.4rem; }
+
+h4 {
+  font-size: 1.8rem;
+  font-style: normal;
+  font-weight: 600;
+  margin: 1.6rem 0 0.4rem; }
+
+h5 {
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 600;
+  margin: 1.6rem 0 0.4rem; }
+
+h6 {
+  color: #777;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 600;
+  margin: 1.6rem 0 0.4rem; }
+
+small {
+  color: #777; }
+
+pre {
+  background: #efefef;
+  color: #444;
+  display: block;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 1.4rem;
+  margin: 1.6rem 0;
+  padding: 1.6rem;
+  word-break: break-all;
+  word-wrap: break-word; }
+
+code {
+  background: #efefef;
+  color: #444;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 1.4rem;
+  word-break: break-all;
+  word-wrap: break-word; }
+
+a {
+  color: #45B0D4;
+  transition: 0.25s ease; }
+  a:hover, a:focus {
+    text-decoration: none; }
+
+dl {
+  margin-bottom: 1.6rem; }
+
+dd {
+  margin-left: 4rem; }
+
+ul,
+ol {
+  margin-bottom: 0.8rem;
+  padding-left: 2rem; }
+
+blockquote {
+  border-left: 0.2rem solid #45B0D4;
+  font-family: Georgia, Times, "Times New Roman", serif;
+  font-style: italic;
+  margin: 1.6rem 0;
+  padding-left: 1.6rem; }
+
+figcaption {
+  font-family: Georgia, Times, "Times New Roman", serif; }
+
+html {
+  font-size: 62.5%; }
+
+body {
+  padding: 0; }
+
+main,
+header,
+footer,
+article,
+section,
+aside,
+details,
+summary {
+  display: block;
+  height: auto;
+  margin: 0 auto;
+  width: 100%; }
+
+main {
+  display: block;
+  margin: 0 auto;
+  max-width: 76.8rem;
+  padding: 0 1.6rem 1.6rem; }
+
+article {
+  clear: left;
+  display: inline-block;
+  float: left;
+  margin-bottom: 1.6rem;
+  max-width: calc(60% - 1rem); }
+
+aside {
+  clear: right;
+  display: inline-block;
+  float: right;
+  margin-bottom: 1.6rem;
+  max-width: calc(40% - 1rem); }
+
+section {
+  clear: both;
+  display: inline-block;
+  float: left;
+  margin-bottom: 1.6rem;
+  max-width: 100%; }
+
+footer {
+  border-top: 0.1rem solid rgba(0, 0, 0, 0.2);
+  clear: both;
+  display: inline-block;
+  float: left;
+  max-width: 100%;
+  padding: 1rem 0;
+  text-align: center; }
+
+hr {
+  border-top: 0.1rem solid rgba(0, 0, 0, 0.2);
+  display: block;
+  margin-bottom: 1.6rem;
+  width: 100%; }
+
+img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: baseline; }
+
+@media screen and (max-width: 40rem) {
+  article,
+  section,
+  aside {
+    clear: both;
+    display: block;
+    max-width: 100%; }
+
+  img {
+    margin-right: 1.6rem; } }
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="week"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+select {
+  border: 0.1rem solid #ccc;
+  border-radius: 0;
+  display: inline-block;
+  padding: 0.8rem;
+  vertical-align: middle;
+  width: inherit; }
+
+input:not([type]) {
+  -webkit-appearance: none;
+  background-clip: padding-box;
+  background-color: rgba(255, 255, 255, 0.85);
+  border: 0.1rem solid #ccc;
+  border-radius: 0;
+  color: #444;
+  display: inline-block;
+  padding: 0.8rem;
+  text-align: left; }
+
+input[type="color"] {
+  padding: 0.8rem 1.6rem; }
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+select:focus,
+textarea:focus {
+  border-color: #b3d4fc; }
+
+input:not([type]):focus {
+  border-color: #b3d4fc; }
+
+input[type="radio"],
+input[type="checkbox"] {
+  vertical-align: middle; }
+
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+  outline: 0.1rem solid thin #444; }
+
+input[type="text"][disabled],
+input[type="password"][disabled],
+input[type="email"][disabled],
+input[type="url"][disabled],
+input[type="date"][disabled],
+input[type="month"][disabled],
+input[type="time"][disabled],
+input[type="datetime"][disabled],
+input[type="datetime-local"][disabled],
+input[type="week"][disabled],
+input[type="number"][disabled],
+input[type="search"][disabled],
+input[type="tel"][disabled],
+input[type="color"][disabled],
+select[disabled],
+textarea[disabled] {
+  background-color: #efefef;
+  color: #777;
+  cursor: not-allowed; }
+
+input:not([type])[disabled] {
+  background-color: #efefef;
+  color: #777;
+  cursor: not-allowed; }
+
+input[readonly],
+select[readonly],
+textarea[readonly] {
+  background-color: #efefef;
+  border-color: #ccc;
+  color: #777; }
+
+input:focus:invalid,
+textarea:focus:invalid,
+select:focus:invalid {
+  border-color: #e9322d;
+  color: #b94a48; }
+
+input[type="file"]:focus:invalid:focus,
+input[type="radio"]:focus:invalid:focus,
+input[type="checkbox"]:focus:invalid:focus {
+  outline-color: #ff4136; }
+
+select {
+  background-color: #fff;
+  border: 0.1rem solid #ccc; }
+
+select[multiple] {
+  height: auto; }
+
+label {
+  line-height: 2; }
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0.8rem 0; }
+
+legend {
+  border-bottom: 0.1rem solid #ccc;
+  color: #444;
+  display: block;
+  margin-bottom: 0.8rem;
+  padding: 0.8rem 0;
+  width: 100%; }
+
+textarea {
+  border: 0.1rem solid #ccc;
+  border-radius: 0;
+  display: block;
+  margin-bottom: 0.8rem;
+  padding: 0.8rem;
+  vertical-align: middle; }
+
+input[type=submit],
+button,
+.schema-editor a {
+  background-color: #45B0D4;
+  border: 0.2rem solid shade(#45B0D4, 20%);
+  border-radius: 0;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  margin-bottom: 0.8rem;
+  margin-right: 0.4rem;
+  padding: 0.8rem 1.6rem;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.25s ease;
+  -webkit-user-drag: none;
+  user-select: none;
+  vertical-align: baseline; }
+  input[type=submit] a,
+  button a,
+  .schema-editor a a {
+    color: #fff; }
+
+input[type=submit]::-moz-focus-inner,
+button::-moz-focus-inner,
+.schema-editor a::-moz-focus-inner {
+  padding: 0; }
+
+input[type=submit]:hover,
+button:hover,
+.schema-editor a:hover {
+  background: #45B0D4;
+  border-color: #45B0D4;
+  color: #fff; }
+  input[type=submit]:hover a,
+  button:hover a,
+  .schema-editor a:hover a {
+    color: #fff; }
+
+input[type=submit]:active,
+button:active,
+.schema-editor a:active {
+  background: #83cae2;
+  border-color: #83cae2;
+  color: #fff; }
+  input[type=submit]:active a,
+  button:active a,
+  .schema-editor a:active a {
+    color: #fff; }
+
+input[type=submit]:disabled,
+button:disabled,
+.schema-editor a:disabled {
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: .40; }
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding-top: 1.6rem;
+  text-align: center; }
+  nav ul li {
+    display: inline; }
+nav a {
+  border-bottom: 0.2rem solid transparent;
+  color: #444;
+  padding: 0.8rem 1.6rem;
+  text-decoration: none;
+  transition: 0.25s ease; }
+  nav a:hover {
+    border-color: rgba(0, 0, 0, 0.2); }
+  nav a:active {
+    border-color: rgba(0, 0, 0, 0.56); }
+
+table {
+  margin-bottom: 1.6rem; }
+
+caption {
+  padding: 0.8rem 0; }
+
+thead th {
+  background: #efefef;
+  color: #444; }
+
+tr {
+  background: #fff;
+  margin-bottom: 0.8rem; }
+
+th,
+td {
+  border: 0.1rem solid #ccc;
+  padding: 0.8rem 1.6rem;
+  text-align: center;
+  vertical-align: inherit; }
+
+tfoot tr {
+  background: none; }
+
+tfoot td {
+  color: #efefef;
+  font-size: 0.8rem;
+  font-style: italic;
+  padding: 1.6rem 0.4rem; }
+
+/* mixins */
+/*http://maximilianhoffmann.com/posts/better-font-rendering-on-osx*/
+/*background image mixin*/
+/* end of gradients */
+/*font mixins*/
+/*********************
+BREAKPOINTS
+*********************/
+textarea, dt.editable > div select,
+dt.editable > div a,
+li.editable > div select,
+li.editable > div a {
+  width: 100%;
+  float: left; }
+
+.schema-editor, .view-port,
+textarea, .schema-editor input {
+  float: left;
+  display: inline-block; }
+
+.schema-editor,
+.view-port {
+  border-left-color: rgba(68, 68, 68, 0.25);
+  border-left-width: 0.35em;
+  border-left-style: groove; }
+
+/*-------------------------------------------*/
+.schema-editor {
+  width: 80%;
+  max-width: 80%;
+  float: none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
+.schema-editor {
+  margin: 0 auto;
+  max-width: 100%;
+  width: 100%;
+  min-height: 250px;
+  background-color: rgba(69, 176, 212, 0.15); }
+  .schema-editor:before, .schema-editor:after {
+    content: " ";
+    display: table; }
+  .schema-editor:after {
+    clear: both; }
+
+/*---------------------------------------------*/
+.view-port {
+  margin: 0 auto;
+  max-width: 90%;
+  width: 100%;
+  -moz-box-shadow: 10, 10, 10, rgba(68, 68, 68, 0.15);
+  -webkit-box-shadow: 10, 10, 10, rgba(68, 68, 68, 0.15);
+  box-shadow: 10, 10, 10, rgba(68, 68, 68, 0.15);
+  background-color: rgba(69, 176, 212, 0.15); }
+  .view-port:before, .view-port:after {
+    content: " ";
+    display: table; }
+  .view-port:after {
+    clear: both; }
+  .view-port dl {
+    background-color: rgba(69, 176, 212, 0.2); }
+  .view-port dt.editable {
+    background-color: rgba(69, 176, 212, 0.4); }
+  .view-port * {
+    margin-left: 0.4rem; }
+
+/*---------------------------------------------*/
+input.data-value {
+  background-color: #fff; }
+
+textarea {
+  min-height: 50vh; }
+
+dt:nth-of-type(2) {
+  background-color: red; }
+
+/*-------------- FLEXBOX -----------------*/
+dl {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap; }
+  dl + dt,
+  dl + dd {
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-ordinal-group: 1;
+    -webkit-order: 0;
+    -moz-order: 0;
+    -ms-flex-order: 0;
+    order: 0;
+    -webkit-box-flex: 3;
+    -webkit-flex-grow: 3;
+    -moz-flex-grow: 3;
+    -ms-flex-positive: 3;
+    flex-grow: 3;
+    -webkit-flex-basis: 100%;
+    -moz-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    -webkit-align-items: stretch;
+    -moz-align-items: stretch;
+    align-items: stretch; }
+    dl + dt input,
+    dl + dd input {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+      -webkit-align-items: stretch;
+      -moz-align-items: stretch;
+      align-items: stretch; }
+    dl + dt ol,
+    dl + dd ol {
+      -webkit-box-direction: normal;
+      -webkit-box-orient: horizontal;
+      -webkit-flex-direction: row;
+      -moz-flex-direction: row;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      -webkit-box-ordinal-group: 1;
+      -webkit-order: 0;
+      -moz-order: 0;
+      -ms-flex-order: 0;
+      order: 0; }
+      dl + dt ol li,
+      dl + dd ol li {
+        -webkit-box-flex: 3;
+        -webkit-flex-grow: 3;
+        -moz-flex-grow: 3;
+        -ms-flex-positive: 3;
+        flex-grow: 3;
+        -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+        -webkit-align-items: stretch;
+        -moz-align-items: stretch;
+        align-items: stretch; }
+
+/*-------------- SELECTORS -----------------*/
+dt.editable > div select,
+dt.editable > div a,
+li.editable > div select,
+li.editable > div a {
+  display: block;
+  clear: both; }
+
+div ~ p {
+  background-color: yellow; }
+
+/*# sourceMappingURL=style.css.map */

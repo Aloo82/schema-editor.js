@@ -1,5 +1,11 @@
-@import 'partials/mixins';
 @import 'marx/marx';
+@import 'partials/mixins';
+@import 'partials/flexbox';
 @import 'partials/grid';
 @import 'partials/base';
 
+
+
+div ~ p {
+  background-color: yellow;
+}
