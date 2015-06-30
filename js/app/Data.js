@@ -138,7 +138,7 @@ define(['jquery'], function ($, VisualObject) {
   };
 
   DataEdit.prototype._drawArray = function(parentName, a) {
-    var html = $('<ul/>', {class: 'editable data-value', 'data-name' : parentName});
+    var html = $('<ol/>', {class: 'editable data-value', 'data-name' : parentName});
     $.each(a, function (i, value) {
       var name = parentName + '[]',
           data = new DataEdit(name, value),

@@ -74,7 +74,7 @@ requirejs(['jquery', 'app/data', 'jquery-ui'],
       _handleClick: function (event) {
         var self     = this,
             target   = $(event.target),
-            editable = target.parents('dl,dt,ul,li'),
+            editable = target.parents('dl,dt,ol,li'),
             element  = null;
 
         if (target.length) {
