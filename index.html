@@ -3,14 +3,11 @@
 <head lang="en">
   <meta charset="UTF-8">
   <title></title>
-  <link href="css/jquery-ui.min.css" rel="stylesheet"/>
-  <script data-main="js/app.js" src="js/require.js"></script>
-  <style>
-    textarea {
-      width: 300px;
-      height: 300px;
-    }
-  </style>
+  <!--<link href="css/jquery-ui.min.css" rel="stylesheet"/>-->
+  <link href="css/style.css" rel="stylesheet"/>
+
+
+
 </head>
 <body>
 
@@ -18,6 +15,7 @@
   <label for="target">JSON Object</label>
   <textarea id="target" data-schema-editor data-options="show-output:true">
 {
+  "string": "This is a string",
   "array": [
     1,
     2,
@@ -35,6 +33,17 @@
 }
   </textarea>
 </form>
+
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script>
+//  $(document).ready(function($){
+
+    jQuery('.editable').eq(1).after('<hr>');
+
+    console.log('testing this is one');
+//  });
+</script>
+<script data-main="js/app.js" src="js/require.js"></script>
 
 </body>
 </html>

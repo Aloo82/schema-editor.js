@@ -1,0 +1,92 @@
+$outer-container: "schema-editor";
+//$dl: "editable data-value";
+$bg-white: "data-value";
+
+
+
+dl.editable{
+  @include row(100%, table);
+  @extend %column-12;
+}
+
+/*-------------------------------------------*/
+
+.#{$outer-container}{
+  max-width: 40%;
+  @include center-block;
+  *{
+    @include border-style('left');
+  }
+}
+
+.#{$outer-container}{
+  a{
+    @extend button;
+  }
+
+  input{
+    @extend %float-left;
+  }
+}
+
+.#{$outer-container}{
+  @include row(100%, table);
+  @extend %column-6;
+  @include breakpoint(mobileonly){
+    //    unable to include extensions here
+  }
+  @extend %float-left;
+  min-height: 250px;
+  background-color: transparentize($blue, 0.85);
+  select,
+  a[data-action]{
+    @extend %column-4;
+  }
+}
+
+
+/*---------------------------------------------*/
+
+.view-port{
+  $color: transparentize($black, 0.85);
+  @include row(90%, table);
+  @include box-shadow(10, 10, 10, $color);
+  background-color: transparentize($blue, 0.85);
+  dl{
+    background-color: transparentize($blue, 0.8);
+  }
+  dt.editable{
+    background-color: transparentize($blue, 0.6);
+  }
+  *{ margin-left: $xs-pad;}
+}
+
+/*---------------------------------------------*/
+
+input.#{$bg-white} {
+  background-color: $white;
+}
+
+
+textarea{
+  @extend %column-12;
+}
+
+
+
+ol{
+  li{
+    @extend %column-4;
+    @extend %float-left;
+    input,
+    div select,
+    div a{
+      @extend %column-12;
+    }
+  }
+}
+
+
+dt:nth-of-type  (){
+
+}

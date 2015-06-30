@@ -50,3 +50,4 @@ crashlytics-build.properties
 # ignore bower_components and node modules
 bower_components/
 node_modules/
+.sass-cache/

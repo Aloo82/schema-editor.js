@@ -1,0 +1,226 @@
+/* mixins */
+/*http://maximilianhoffmann.com/posts/better-font-rendering-on-osx*/
+
+
+@mixin font-smoothing($value: antialiased) {
+  @if $value == antialiased {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  @else {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+  }
+}
+
+/*background image mixin*/
+@mixin background($imgpath,$position:0 0,$repeat: repeat) {
+  background: {
+    image: url($imgpath);
+    position: $position;
+    repeat: $repeat;
+  }
+}
+
+@mixin bg-clip($value){
+  -moz-background-clip: $value;
+  -webkit-background-clip: $value;
+  background-clip: $value;
+}
+
+
+@mixin abs-pos ($top: auto, $right: auto, $bottom: auto, $left: auto) {
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  position: absolute;
+}
+
+
+@mixin abs-pos ($top: auto, $right: auto, $bottom: auto, $left: auto) {
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  position: absolute;
+}
+
+@mixin fix-pos ($top: auto, $right: auto, $bottom: auto, $left: auto) {
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  position: fixed;
+  z-index:+9999;
+}
+
+@mixin rel-pos ($top: auto, $right: auto, $bottom: auto, $left: auto) {
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  position: fixed;
+  z-index:+9999;
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+
+@mixin border-style($dir){
+  border-#{$dir}:{
+    color: transparentize($black, 0.75);
+    width: 0.35em;
+    style: groove;
+  }
+}
+
+
+@mixin box-sizing($box){
+  -moz-box-sizing: $box;
+  -webkit-box-sizing: $box;
+  box-sizing: $box;
+}
+
+@mixin text-shadow($x, $y, $spread, $colour){
+  -moz-text-shadow: ($x, $y, $spread, $colour);
+  -webkit-text-shadow: ($x, $y, $spread, $colour);
+  text-shadow:($x, $y, $spread, $colour);
+}
+
+@mixin box-shadow($x, $y, $spread, $colour){
+  -moz-box-shadow: ($x, $y, $spread, $colour);
+  -webkit-box-shadow: ($x, $y, $spread, $colour);
+  box-shadow:($x, $y, $spread, $colour);
+}
+
+@mixin box-emboss($opacity, $opacity2){
+  box-shadow:$white($opacity) 0 1px 0, inset $black($opacity2) 0 1px 0;
+}
+
+
+
+@mixin text-emboss{
+  text-shadow: -1px -1px 1px $white, 1px 1px 1px $black;
+  color: transparent;
+  opacity: 0.25;
+}
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+@mixin center-block {
+  float:none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Hat Tip:
+// Inspired by CSSTricks
+// http://css-tricks.com/snippets/css/css-box-shadow/
+
+// Usage:
+// @include drop-shadow(H-OFFSET, V-OFFSET, BLUR, SPREAD, COLOUR);
+
+@mixin drop-shadow($x: 0px, $y: 1px, $blur: 2px, $spread: 2px, $colour: rgba(0,0,0,0.5)) {
+
+  -webkit-box-shadow: $x $y $blur $spread $colour;
+  -moz-box-shadow: $x $y $blur $spread $colour;
+  box-shadow: $x $y $blur $spread $colour;
+
+}
+
+@mixin scale($x, $y) {
+  -webkit-transform: scale($x, $y);
+  -webkit-transform: scale($x, $y);
+  -moz-transform: scale($x, $y);
+  -ms-transform: scale($x, $y);
+  -o-transform: scale($x, $y);
+  transform: scale($x, $y);
+}
+
+@mixin gradient-directional($startColour, $endColour, $angle : 90deg) {
+  background: $startColour;							// or $endColour - your call
+  background: -webkit-linear-gradient($angle, $startColour, $endColour);
+  background: -moz-linear-gradient($angle, $startColour, $endColour);
+  background: -ms-linear-gradient($angle, $startColour, $endColour);
+  background: -o-linear-gradient($angle, $startColour, $endColour);
+  background: linear-gradient($angle, $startColour, $endColour);
+}
+
+
+@mixin gradient-vertical($startColour, $endColour) {
+  background: $startColour;							// or $endColour - your call
+  background: -webkit-gradient(linear, 0 0, 0 100%, from($startColour), to($endColour));
+  background: -webkit-linear-gradient(top, $startColour, $endColour);
+  background: -moz-linear-gradient(top, $startColour, $endColour);
+  background: -ms-linear-gradient(top, $startColour, $endColour);
+  background: -o-linear-gradient(top, $startColour, $endColour);
+  background: linear-gradient(top, $startColour, $endColour);
+}
+
+@mixin linear-gradient($startColour, $endColour) {
+  background: $startColour;							// or $endColour - your call
+  background: -webkit-gradient(linear, 0 0, 100% 0, from($startColour), to($endColour));
+  background: -webkit-linear-gradient(left, $startColour, $endColour);
+  background: -moz-linear-gradient(left, $startColour, $endColour);
+  background: -ms-linear-gradient(left, $startColour, $endColour);
+  background: -o-linear-gradient(left, $startColour, $endColour);
+  background: linear-gradient(left, $startColour, $endColour);
+}
+
+/* end of gradients */
+/*font mixins*/
+
+@mixin font-size($sizeValue: 12 ){
+  font-size: $sizeValue + px; //fallback for old browsers
+  font-size: (0.125 * $sizeValue) + rem;
+}
+
+// font smoothing
+@mixin font-smoothing($value: antialiased) {
+  @if $value == antialiased {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  @else {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+  }
+}
+
+
+
+
+/*********************
+BREAKPOINTS
+*********************/
+
+@mixin breakpoint($point) {
+  @if $point == desktop {
+    @media (min-width: 70em) { @content ; }
+  }
+  @else if $point == laptop {
+    @media (min-width: 64em) { @content ; }
+  }
+  @else if $point == tablet {
+    @media (min-width: 50em) { @content ; }
+  }
+  @else if $point == phablet {
+    @media (min-width: 37.5em)  { @content ; }
+  }
+  @else if $point == mobileonly {
+    @media (max-width: 37.5em)  { @content ; }
+
+  }
+}
+

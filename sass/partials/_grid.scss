@@ -1,0 +1,34 @@
+
+
+@for $i from 1 through 12 {
+  %column-#{$i} {
+    width: 100% / $grid-columns * $i;
+    float: left;
+  }
+}
+
+$dir: left !default;
+  %float-#{$dir}{
+    float: #{$dir};
+//    clear: #{$dir};
+    display: inline-block;
+  }
+
+
+@mixin row($max-width, $display) {
+  margin: 0 auto;
+  max-width: $max-width;
+  width: 100%;
+  &:before,
+  &:after{
+    content: " ";
+    display: $display;
+  }
+  &:after{
+    clear: both;
+  }
+}
+
+
+
+
