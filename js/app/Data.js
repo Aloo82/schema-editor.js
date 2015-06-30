@@ -41,15 +41,15 @@ define(['jquery'], function ($, VisualObject) {
         }
         break;
       case 'boolean':
-        var inpt = $('<input/>', {type: 'checkbox', class: 'data-value', checked: v, name: name});
+        var inpt = $('<input/>', {type: 'checkbox', class: 'data-value', checked: v, name: name}).on('change', function () {DataEdit.change(this)});
         html.append(inpt);
         break;
       case 'number':
-        var inpt = $('<input/>', {type: 'number', class: 'data-value', value: v, name: name});
+        var inpt = $('<input/>', {type: 'number', class: 'data-value', value: v, name: name}).on('change keyup', function () {DataEdit.change(this)});
         html.append(inpt);
         break;
       default:
-        var inpt = $('<input/>', {type: 'text', class: 'data-value', value: v, name: name});
+        var inpt = $('<input/>', {type: 'text', class: 'data-value', value: v, name: name}).on('change keyup', function () {DataEdit.change(this)});
         html.append(inpt);
         break;
     }
@@ -65,7 +65,7 @@ define(['jquery'], function ($, VisualObject) {
     $.each(o, function (property, value) {
       var name = parentName + '[' + property + ']',
           data = new DataEdit(name, value),
-          dt   = $('<dt/>', {class: 'editable', html: $('<input/>', {value: property})}),
+          dt   = $('<dt/>', {class: 'editable', html: $('<input/>', {value: property}).on('change keyup', function () {$(this).trigger('schema-change');})}),
           dl   = $('<dd/>', {html: data.draw()});
 
       html
@@ -75,12 +75,19 @@ define(['jquery'], function ($, VisualObject) {
     return html;
   };
 
+  DataEdit.change = function(element) {
+    var e = $(element);
+    e.parent().data('schema-value', DataEdit.returnInputValue(e));
+    window.console && console.log(DataEdit.returnInputValue(e), e.parent(), e.parent().data('schema-value'));
+    e.trigger('schema-change');
+  };
+
   DataEdit.addProperty = function(parent, name, value) {
     var tag = parent.prop('tagName').toLocaleLowerCase();
 
     if (tag == 'dl') {
       var data = new DataEdit(name, value),
-          dt   = $('<dt/>', {class: 'editable', html: $('<input/>', {value: name})}),
+          dt   = $('<dt/>', {class: 'editable', html: $('<input/>', {value: name}).on('change keyup', function () {$(this).trigger('schema-change');})}),
           dd   = $('<dd/>', {html: data.draw()});
 
       parent
@@ -93,31 +100,34 @@ define(['jquery'], function ($, VisualObject) {
     var tag = property.prop('tagName').toLocaleLowerCase();
     window.console && console.log('remove property',tag);
     if (tag == 'dt') {
+      var p = property.parent();
       property.next('dd').remove();
       property.remove();
+      p.trigger('schema-change');
     }
+
   };
 
   DataEdit.editPropertyType = function(property, type) {
     var tag = property.prop('tagName').toLocaleLowerCase();
-    window.console && console.log('edit property',tag, type);
+    window.console && console.log('edit property',tag, type,property.data('schema-value'));
     if (tag == 'dt') {
-      var value;
+      var value = property.data('schema-value');
       switch (type) {
         case 'object':
-          value = {'new':'object'};
+          value = value || {'new':'object'};
           break;
         case 'array':
-          value = ['new collection'];
+          value = value || ['new collection'];
           break;
         case 'number':
-          value = 0;
+          value = value || 0;
           break;
         case 'boolean':
-          value = false;
+          value = value || false;
           break;
         default:
-          value = '';
+          value = value || '';
           break;
       }
       var data = new DataEdit('some-name', value),
@@ -128,7 +138,7 @@ define(['jquery'], function ($, VisualObject) {
   };
 
   DataEdit.prototype._drawArray = function(parentName, a) {
-    var html = $('<ul/>', {class: 'editable data-value', 'data-name' : parentName});
+    var html = $('<ol/>', {class: 'editable data-value', 'data-name' : parentName});
     $.each(a, function (i, value) {
       var name = parentName + '[]',
           data = new DataEdit(name, value),
@@ -152,30 +162,33 @@ define(['jquery'], function ($, VisualObject) {
   };
 
   DataEdit.editRowType = function(row, type) {
-    var tag = row.prop('tagName').toLocaleLowerCase();
-    window.console && console.log('edit row',tag, type);
+    var tag = row.prop('tagName').toLocaleLowerCase(),
+        p   = row.parent();
+    window.console && console.log('edit row',tag, type, row.data('schema-value'));
     if (tag == 'li') {
-      var value;
+      var value = row.data('schema-value');
       switch (type) {
         case 'object':
-          value = {'new':'object'};
+          value = value || {'new':'object'};
           break;
         case 'array':
-          value = ['new collection'];
+          value = value || ['new collection'];
           break;
         case 'number':
-          value = 0;
+          value = Number(value) || 0;
           break;
         case 'boolean':
-          value = false;
+          value = (value && true) || false;
           break;
         default:
-          value = '';
+          value = value || '';
           break;
       }
       var data = new DataEdit('some-name', value),
           li   = $('<li/>', {class: 'editable', html: data.draw()});
       row.replaceWith(li);
+      window.console && console.log(p);
+      p.trigger('schema-change');
     }
   };
 
@@ -183,7 +196,9 @@ define(['jquery'], function ($, VisualObject) {
     var tag = element.prop('tagName').toLocaleLowerCase();
     window.console && console.log('remove row',tag);
     if (tag == 'li') {
+      var p = element.parent();
       element.remove();
+      p.trigger('schema-change')
     }
   };
 
@@ -222,20 +237,26 @@ define(['jquery'], function ($, VisualObject) {
         inpt = element.find('.data-value'),
         tag  = inpt.length ? inpt.prop('tagName').toLocaleLowerCase() : null;
     if (tag == 'input') {
-      var type = inpt.prop('type').toLocaleLowerCase();
-      switch (type) {
-        case 'number':
-          data = Number(inpt.val());
-          break;
-        case 'checkbox':
-          data = inpt.val() ? true : false;
-          break;
-        case 'text':
-          data = inpt.val();
-          break;
-      }
+      data = DataEdit.returnInputValue(inpt);
     } else {
       data = DataEdit.toData(inpt);
+    }
+    return data;
+  };
+
+  DataEdit.returnInputValue = function(inpt) {
+    var data = null,
+        type = inpt.prop('type').toLocaleLowerCase();
+    switch (type) {
+      case 'number':
+        data = Number(inpt.val());
+        break;
+      case 'checkbox':
+        data = inpt.is(':checked');
+        break;
+      case 'text':
+        data = inpt.val();
+        break;
     }
     return data;
   };
