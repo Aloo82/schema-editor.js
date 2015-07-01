@@ -195,7 +195,7 @@ code {
   word-wrap: break-word; }
 
 a {
-  color: #45B0D4;
+  color: #e2f2f8;
   transition: 0.25s ease; }
   a:hover, a:focus {
     text-decoration: none; }
@@ -212,7 +212,7 @@ ol {
   padding-left: 2rem; }
 
 blockquote {
-  border-left: 0.2rem solid #45B0D4;
+  border-left: 0.2rem solid #e2f2f8;
   font-family: Georgia, Times, "Times New Roman", serif;
   font-style: italic;
   margin: 1.6rem 0;
@@ -440,8 +440,8 @@ textarea {
 input[type=submit],
 button,
 .schema-editor a {
-  background-color: #45B0D4;
-  border: 0.2rem solid shade(#45B0D4, 20%);
+  background-color: #e2f2f8;
+  border: 0.2rem solid shade(#e2f2f8, 20%);
   border-radius: 0;
   color: #fff;
   cursor: pointer;
@@ -469,8 +469,8 @@ button::-moz-focus-inner,
 input[type=submit]:hover,
 button:hover,
 .schema-editor a:hover {
-  background: #45B0D4;
-  border-color: #45B0D4;
+  background: #e2f2f8;
+  border-color: #e2f2f8;
   color: #fff; }
   input[type=submit]:hover a,
   button:hover a,
@@ -480,8 +480,8 @@ button:hover,
 input[type=submit]:active,
 button:active,
 .schema-editor a:active {
-  background: #83cae2;
-  border-color: #83cae2;
+  background: white;
+  border-color: white;
   color: #fff; }
   input[type=submit]:active a,
   button:active a,
@@ -557,6 +557,8 @@ textarea {
   float: left; }
 
 /*------------ MAIN STRUCTURE ---------------*/
+/*------------ VIEW PORT ---------------*/
+/*------------ EDITABLE ---------------*/
 .editable * {
   width: 100%;
   max-width: 100%;
@@ -565,6 +567,7 @@ textarea {
   margin-left: auto;
   margin-right: auto; }
 
+/*------------ DATA-VALUE ---------------*/
 /*-------------------------------------------*/
 .schema-editor {
   width: 80%;
@@ -581,19 +584,13 @@ textarea {
 .view-port,
 textarea {
   flex: 1 50%;
-  background-color: rgba(69, 176, 212, 0.15);
-  border-left-color: rgba(68, 68, 68, 0.25);
-  border-left-width: 0.35em;
-  border-left-style: groove; }
-
-.schema-editor {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap; }
+  background-color: rgba(226, 242, 248, 0.15);
+  width: 80%;
+  max-width: 80%;
+  float: none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
 
 /*---------------------------------------------*/
 .view-port {
