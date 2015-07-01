@@ -4,10 +4,28 @@ $inner-container: "view-port";
 $bg-white: "data-value";
 
 
+
+/*------------ MAIN STRUCTURE ---------------*/
+
+#target { }
+
+.schema-editor { }
+
+.view-port { }
+
+.editable {
+  *{
+    @extend %center-block(100%);
+  }
+}
+
+.data-value {  }
+
+
 /*-------------------------------------------*/
 
 .#{$outer-container}{
-   @include center-block(80%);
+  @include center-block(80%);
 }
 
 
@@ -17,7 +35,7 @@ $bg-white: "data-value";
 
 .#{$inner-container},
 textarea{
-//  $width: 50%;
+  //  $width: 50%;
   background-color: transparentize($blue, 0.85);
   &:after{
     @include abs-pos(0, 0, 0, 0);

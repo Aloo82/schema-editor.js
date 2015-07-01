@@ -556,6 +556,15 @@ textarea {
   width: 100%;
   float: left; }
 
+/*------------ MAIN STRUCTURE ---------------*/
+.editable * {
+  width: 100%;
+  max-width: 100%;
+  float: none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
 /*-------------------------------------------*/
 .schema-editor {
   width: 80%;
@@ -633,33 +642,33 @@ dl dd {
   dl dt:nth-of-type(3),
   dl dd:nth-of-type(3) {
     order: 3; }
-  dl dt:nth-of-type(4-3),
-  dl dd:nth-of-type(4-3) {
-    order: 4-3; }
-  dl dt:nth-of-type(5-3),
-  dl dd:nth-of-type(5-3) {
-    order: 5-3; }
-  dl dt:nth-of-type(6-3),
-  dl dd:nth-of-type(6-3) {
-    order: 6-3; }
-  dl dt:nth-of-type(7-6),
-  dl dd:nth-of-type(7-6) {
-    order: 7-6; }
-  dl dt:nth-of-type(8-6),
-  dl dd:nth-of-type(8-6) {
-    order: 8-6; }
-  dl dt:nth-of-type(9-6),
-  dl dd:nth-of-type(9-6) {
-    order: 9-6; }
-  dl dt:nth-of-type(10-9),
-  dl dd:nth-of-type(10-9) {
-    order: 10-9; }
-  dl dt:nth-of-type(11-9),
-  dl dd:nth-of-type(11-9) {
-    order: 11-9; }
-  dl dt:nth-of-type(12-9),
-  dl dd:nth-of-type(12-9) {
-    order: 12-9; }
+  dl dt:nth-of-type(1),
+  dl dd:nth-of-type(1) {
+    order: 1; }
+  dl dt:nth-of-type(2),
+  dl dd:nth-of-type(2) {
+    order: 2; }
+  dl dt:nth-of-type(3),
+  dl dd:nth-of-type(3) {
+    order: 3; }
+  dl dt:nth-of-type(1),
+  dl dd:nth-of-type(1) {
+    order: 1; }
+  dl dt:nth-of-type(2),
+  dl dd:nth-of-type(2) {
+    order: 2; }
+  dl dt:nth-of-type(3),
+  dl dd:nth-of-type(3) {
+    order: 3; }
+  dl dt:nth-of-type(1),
+  dl dd:nth-of-type(1) {
+    order: 1; }
+  dl dt:nth-of-type(2),
+  dl dd:nth-of-type(2) {
+    order: 2; }
+  dl dt:nth-of-type(3),
+  dl dd:nth-of-type(3) {
+    order: 3; }
 
 /*-------------- SELECTORS -----------------*/
 dt.editable > div select,

@@ -4,6 +4,23 @@ $inner-container: "view-port";
 $bg-white: "data-value";
 
 
+/*------------ MAIN STRUCTURE ---------------*/
+
+#target { }
+
+.schema-editor { }
+
+.view-port { }
+
+.editable {
+  *{
+    @include center-block(100%);
+  }
+}
+
+.data-value {  }
+
+
 /*-------------------------------------------*/
 
 .#{$outer-container}{
@@ -89,18 +106,18 @@ dl dd{
     }
   }
   @for $i from 4 through 6 {
-    &:nth-of-type(#{$i}-3){
-      order: #{$i}-3;
+    &:nth-of-type(#{$i - 3}){
+      order: #{$i - 3};
     }
   }
   @for $i from 7 through 9 {
-    &:nth-of-type(#{$i}-6){
-      order: #{$i}-6;
+    &:nth-of-type(#{$i - 6}){
+      order: #{$i - 6};
     }
   }
   @for $i from 10 through 12 {
-    &:nth-of-type(#{$i}-9){
-      order: #{$i}-9;
+    &:nth-of-type(#{$i - 9}){
+      order: #{$i - 9};
     }
   }
 }
