@@ -2,10 +2,36 @@
 @import 'partials/mixins';
 @import 'partials/flexbox';
 @import 'partials/grid';
-@import 'partials/base';
+//@import 'partials/base';
+@import 'partials/base2';
 
 
+//array
+//boolean
+//null
+//object
+//string
 
-div ~ p {
-  background-color: yellow;
+
+$attr: array;
+
+[value*="#{$attr}"]  {
+  @if $attr == array {
+    outline: 1px solid red;
+    width: 100%;
+  }
+  @else if $attr == boolean {
+    outline: 1px solid red;
+    width: 100%;
+  }
+  @else if $attr == null {
+    outline: 1px solid red;
+    width: 100%;
+  }
+  @else if $attr == number {
+    outline: 1px solid red;
+    width: 100%;
+  }
+  @else {
+  }
 }

@@ -1,0 +1,185 @@
+$outer-container: "schema-editor";
+$inner-container: "view-port";
+//$dl: "editable data-value";
+$bg-white: "data-value";
+
+
+/*-------------------------------------------*/
+
+.#{$outer-container}{
+  @include center-block(80%);
+  display: flex;
+  flex-flow: row wrap;
+  input{
+    max-width: 100%;
+  }
+}
+
+.#{$inner-container},
+textarea{
+  flex: 1 50%;
+  background-color: transparentize($blue, 0.85);
+  @include border-style('left');
+}
+
+.#{$outer-container}{
+  a{
+    @extend button;
+  }
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+
+
+
+/*---------------------------------------------*/
+
+.#{$inner-container} {
+  $color: transparentize($black, 0.85);
+  @include box-shadow(10, 10, 2, $color);
+}
+
+.#{$inner-container},
+textarea{
+  flex: 1 50%;
+}
+
+/*---------------------------------------------*/
+
+input.#{$bg-white} {
+  background-color: $white;
+}
+
+
+textarea{
+  @extend %column-12;
+  min-height: 555px;
+}
+
+/*-------------- FLEXBOX -----------------*/
+
+ol li{
+  @for $i from 1 through 3 {
+    &:nth-of-type(#{$i}){
+      order: #{$i};
+    }
+  }
+}
+
+dl dt,
+dl dd{
+  -webkit-flex: 1 0 30%;
+  -webkit-flex-direction: row; /* Safari */
+  -webkit-justify-content: center; /* Safari */
+  -webkit-flex-grow: 1; /* Safari */
+
+  flex: 1 0 30%;
+  flex-grow:  1;
+  flex-direction:         row;
+  justify-content:         center;
+  @for $i from 1 through 3 {
+    &:nth-of-type(#{$i}){
+      order: #{$i};
+    }
+  }
+  @for $i from 4 through 6 {
+    &:nth-of-type(#{$i}-3){
+      order: #{$i}-3;
+    }
+  }
+  @for $i from 7 through 9 {
+    &:nth-of-type(#{$i}-6){
+      order: #{$i}-6;
+    }
+  }
+  @for $i from 10 through 12 {
+    &:nth-of-type(#{$i}-9){
+      order: #{$i}-9;
+    }
+  }
+}
+
+
+
+
+/*-------------- SELECTORS -----------------*/
+
+dt.editable,
+li.editable{
+  > div{
+    select{display: block;}
+    select,
+    a{
+      clear: both;
+      margin-top: 2%;
+    }
+  }
+  >div >select{
+    padding: 0.4em;
+  }
+}
+.editable > div select{ display: block; }
+
+/*--------------END -----------------*/
+
+
+dd{
+  dl{
+
+  }
+}
+
+
+
+ol.editable{
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-direction: row;
+  /* works with row or column */
+  flex-direction: row;
+
+  -webkit-align-items: center;
+  align-items: center;
+
+  -webkit-justify-content: center;
+  justify-content: center;
+  li{
+    overflow: hidden;
+  }
+}
+
+dl{
+  @extend ol.editable;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+
+dt.editable + dd{
+  dl{
+    @extend ol.editable;
+    -webkit-flex-direction: column;
+    /* works with row or column */
+    flex-direction: column;
+  }
+}
+
+
+li.editable{
+  >input{
+    width: 100%;
+    display: block;
+    +div{
+      width: 100%;
+      display: block;
+    }
+  }
+
+}

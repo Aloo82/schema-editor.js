@@ -4,60 +4,49 @@ $inner-container: "view-port";
 $bg-white: "data-value";
 
 
-.#{$outer-container},
+/*-------------------------------------------*/
+
+.#{$outer-container}{
+   @include center-block(80%);
+}
+
+
 .#{$inner-container}{
   @include border-style('left');
 }
 
-/*-------------------------------------------*/
-
-.#{$outer-container}{
-   $width: 80%;
-  @extend %float-left;
-   @include center-block($width);
-}
 .#{$inner-container},
 textarea{
-  $width: 50%;
-  @extend %float-left;
+//  $width: 50%;
+  background-color: transparentize($blue, 0.85);
+  &:after{
+    @include abs-pos(0, 0, 0, 0);
+    @include border-style('left');
+    content: " ";
+  }
 }
 
 .#{$outer-container}{
   a{
     @extend button;
   }
-
-  input{
-    @extend %float-left;
-  }
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
 }
 
-.#{$outer-container}{
-  @include row(100%, table);
-//  @extend %column-6;
-  @include breakpoint(mobileonly){
-    //    unable to include extensions here
-  }
-  @extend %float-left;
-  min-height: 250px;
-  background-color: transparentize($blue, 0.85);
-}
 
 
 /*---------------------------------------------*/
 
-.view-port{
+.#{$inner-container} {
   $color: transparentize($black, 0.85);
-  @include row(90%, table);
   @include box-shadow(10, 10, 10, $color);
-  background-color: transparentize($blue, 0.85);
-  dl{
-    background-color: transparentize($blue, 0.8);
-  }
-  dt.editable{
-    background-color: transparentize($blue, 0.6);
-  }
-  *{ margin-left: $xs-pad;}
+  flex: 1 50%;
 }
 
 /*---------------------------------------------*/
@@ -69,58 +58,78 @@ input.#{$bg-white} {
 
 textarea{
   @extend %column-12;
-  min-height: 50vh;
+  min-height: 100vh;
+  flex: 1 50%;
 }
-
-
-
-//ol{
-//  li{
-//    @extend %column-4;
-//    @extend %float-left;
-//    input,
-//    div select,
-//    div a{
-//      @extend %column-12;
-//    }
-//  }
-//}
-
-$var: 2 !default;
-dt:nth-of-type(#{$var}){
-  background-color: red;
-}
-
-
 
 /*-------------- FLEXBOX -----------------*/
-
-.#{$inner-container} {
-
+dl{
+  *{
+    @include align-items( stretch );
+  }
 }
 
 dl{
-  @include flexbox;
-  @include flex-wrap(wrap);
-  + dt,
-  + dd{
-    @include flex-direction(row);
-    @include order(0);
-    @include flex-grow(3);
-    @include flex-basis(100%);
-    @include align-items( stretch );
+  -webkit-flex-flow: row wrap;
+  justify-content: flex-end;
+  dt,
+  dt + dd{
+    height: 100px; /* Or whatever */
+    margin: auto;
+    justify-content: space-around;
+
     input{
-      @include flexbox;
-      @include align-items( stretch );
+      width: 100%;
+      max-width: 100%;
     }
 
     ol{
-      @include flex-direction(row);
-      @include order(0);
       li{
-        @include flex-grow(3);
-        @include align-items( stretch );
+        justify-content: space-around;
+        padding:{
+          left: 0;
+        }
       }
+    }
+  }
+}
+
+ol{
+  li{
+    @for $i from 1 through 12 {
+      &:nth-of-type(#{$i}){
+        order: #{$i};
+      }
+    }
+  }
+}
+
+
+
+
+dl, ol,
+[data-name]{
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+
+
+
+dl dt,
+dl dd{
+  @for $i from 1 through 3 {
+    &:nth-of-type(#{$i}){
+      order: #{$i};
+    }
+  }
+  @for $i from 4 through 6 {
+    &:nth-of-type(#{$i}-3){
+      order: #{$i}-3;
     }
   }
 }
@@ -137,6 +146,11 @@ li.editable{
       @extend %column-12;
       display: block;
       clear: both;
+      margin-top: 2%;
     }
   }
+  >div >select{
+    padding: 0.4em;
+  }
 }
+
