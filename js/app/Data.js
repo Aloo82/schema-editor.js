@@ -54,6 +54,10 @@ define(['jquery'], function ($, VisualObject) {
         break;
     }
     /**
+     * Add a remove link
+     */
+    html.append($('<a/>', {class: 'action-remove'}));
+    /**
      * Add append elements
      */
     options.append && html.append(options.append);
@@ -67,6 +71,10 @@ define(['jquery'], function ($, VisualObject) {
           data = new DataEdit(name, value),
           dt   = $('<dt/>', {class: 'editable', html: $('<input/>', {type: 'text', value: property, class: 'property-name'}).on('change keyup', function () {$(this).trigger('schema-change');})}),
           dl   = $('<dd/>', {html: data.draw()});
+      /**
+       * Add type selector for each element
+       */
+      dt.prepend(DataEdit.typeSelector(typeof value));
 
       html
         .append(dt)
@@ -143,6 +151,7 @@ define(['jquery'], function ($, VisualObject) {
       var name = parentName + '[]',
           data = new DataEdit(name, value),
           li   = $('<li/>', {class: 'editable', html: data.draw()});
+      li.prepend(DataEdit.typeSelector(typeof value));
       html
         .append(li);
     });
@@ -156,6 +165,7 @@ define(['jquery'], function ($, VisualObject) {
       var name = element.attr('data-name') + '[]',
           data = new DataEdit('', value),
           li   = $('<li/>', {class: 'editable', html: data.draw()});
+      li.prepend(DataEdit.typeSelector(typeof value));
       element
         .append(li);
     }
@@ -259,6 +269,22 @@ define(['jquery'], function ($, VisualObject) {
         break;
     }
     return data;
+  };
+
+  DataEdit.typeSelector = function(selected) {
+    var select = $('<select/>'),
+      types  = {
+        'string' : 'Text',
+        'object' : 'Object',
+        'array'  : 'Collection',
+        'number' : 'Number',
+        'boolean': 'Bool',
+        'null'   : 'Null'
+      };
+    $.each(types, function(value, label) {
+      select.append($('<option/>',{value: value, text: label}));
+    });
+    return select;
   };
 
   return DataEdit;
