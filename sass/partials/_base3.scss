@@ -4,12 +4,41 @@ $inner-container: "view-port";
 $bg-white: "data-value";
 
 
-/*------------ PLACEHOLDERS  ---------------*/
 
-%row{
-  @include grid-row;
-  @include clearfix();
+
+
+/*------------ PLACEHOLDERS  ---------------*/
+$pad: 20px;
+%row {
+  margin: 0 0 $pad 0;
+  &:after{
+    content: "";
+    display: table;
+    clear: both;
+  }
+  %column {
+    float: left;
+    padding-right: $pad;
+    .grid &:last-of-type {
+      padding-right: 0;
+    }
+  }
+  @for $i from 1 through 12 {
+    %columns-#{$i} {
+      width: ((100 / 12) * $i) * 1%;
+      clear: none;
+    }
+  }
 }
+
+
+
+
+
+
+
+
+
 
 /*------------ MAIN STRUCTURE ---------------*/
 
@@ -20,56 +49,80 @@ $bg-white: "data-value";
 #target { }
 
 .schema-editor {
-  @include grid-row;
-  @include clearfix();
-
+  @extend %row;
+  background-color: rgba(blue, 0.15);
   textarea{
-    @extend .columns;
-    @extend .medium-6;
     height: 75vh;
   }
-  a[data-action]{
-
-  }
 }
 
-.view-port {
-  @extend .columns;
-  @extend .medium-6;
+
+textarea { @extend %columns-6; }
+.view-port{ @extend %columns-6; }
+
+dl,ol{
+  @extend %row;
 }
 
-dl{
-  @extend .row;
-  dt,
-  dt + dd{
-//    @extend .columns.medium-6;
-  }
+
+dt select,
+dt input{
+  @extend %columns-6;
+
 }
 
 
 dl dt,
-dl dd{
-  @for $i from 1 through 2 {
-    &:nth-of-type(#{$i}){
-//      @extend .columns.medium-6;
-    }
-  }
-  @for $i from 3 through 5 {
-    &:nth-of-type(#{$i}){
-//      @extend .columns.medium-4;
-    }
-  }
-  @for $i from 7 through 12 {
-    &:nth-of-type(#{$i}){
-      display: none;
-    }
+dl dd,
+ol li{
+  margin-left: 0;
+  padding-left: 0;
+}
+
+dd ol{ @extend %row; }
+dd ol li{ @extend %columns-4; }
+
+
+
+/*-------------------------------------------*/
+
+
+@mixin counter($i){
+  &:nth-of-type(#{$i}){
+    outline: 1px solid #ff0000;
+    transition: scale(0.5, 0.5);
   }
 }
 
 
-dl:nth-of-type(2){
-  @extend %row;
-}
+
+
+
+
+/*-------------------------------------------*/
+
+//dl dt,
+//dl dd,
+//ol li{
+//  @extend .columns;
+//  @for $i from 1 through 2 {
+//    &:nth-of-type(#{$i}){
+//      @extend .medium-6;
+//    }
+//  }
+//  @for $i from 3 through 5 {
+//    &:nth-of-type(#{$i}){
+//      @extend .medium-4;
+//    }
+//  }
+//  @for $i from 6 through 7 {
+//    &:nth-of-type(#{$i}){
+//      @extend .medium-6;
+//    }
+//  }
+//}
+
+/*-------------------------------------------*/
 
 
 // eg class="data........"
@@ -152,51 +205,3 @@ dl dd{
 }
 
 
-
-
-/*-------------- SELECTORS -----------------*/
-
-dt.editable,
-li.editable{
-  > div{
-    select{display: block;}
-    select,
-    a{
-    }
-  }
-  >div >select{
-  }
-}
-.editable > div select{ display: block; }
-
-/*--------------END -----------------*/
-
-
-dd{
-  dl{
-
-  }
-}
-
-
-
-ol.editable{
-  li{
-  }
-}
-
-dl{
-}
-
-dt.editable + dd{
-  dl{
-  }
-}
-
-
-li.editable{
-  >input{
-    +div{
-    }
-  }
-}

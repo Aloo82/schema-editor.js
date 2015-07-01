@@ -1,34 +1,32 @@
 
+//---------- GRID -----------------
 
-@for $i from 1 through 12 {
-  %column-#{$i} {
-    width: 100% / $grid-columns * $i;
-    float: left;
-  }
+
+* {
+  @include box-sizing(border-box);
 }
 
-$dir: left !default;
-  %float-#{$dir}{
-    float: #{$dir};
-//    clear: #{$dir};
-    display: inline-block;
-  }
+$pad: 20px;
 
+%grid {
+  background: white;
+  margin: 0 0 $pad 0;
 
-@mixin row($max-width, $display) {
-  margin: 0 auto;
-  max-width: $max-width;
-  width: 100%;
-  &:before,
-  &:after{
-    content: " ";
-    display: $display;
-  }
-  &:after{
+  &:after {
+    /* Or @extend clearfix */
+    content: "";
+    display: table;
     clear: both;
   }
 }
 
+%columns {
+  float: left;
+  padding-right: $pad;
+  .grid &:last-of-type {
+    padding-right: 0;
+  }
+}
 
 
 
