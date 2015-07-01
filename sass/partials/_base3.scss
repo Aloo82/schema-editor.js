@@ -1,0 +1,202 @@
+$outer-container: "schema-editor";
+$inner-container: "view-port";
+//$dl: "editable data-value";
+$bg-white: "data-value";
+
+
+/*------------ PLACEHOLDERS  ---------------*/
+
+%row{
+  @include grid-row;
+  @include clearfix();
+}
+
+/*------------ MAIN STRUCTURE ---------------*/
+
+
+
+
+
+#target { }
+
+.schema-editor {
+  @include grid-row;
+  @include clearfix();
+
+  textarea{
+    @extend .columns;
+    @extend .medium-6;
+    height: 75vh;
+  }
+  a[data-action]{
+
+  }
+}
+
+.view-port {
+  @extend .columns;
+  @extend .medium-6;
+}
+
+dl{
+  @extend .row;
+  dt,
+  dt + dd{
+    @extend .columns.medium-6;
+  }
+}
+
+
+dl dt,
+dl dd{
+  @for $i from 1 through 2 {
+    &:nth-of-type(#{$i}){
+      @extend .columns.medium-6;
+    }
+  }
+  @for $i from 3 through 5 {
+    &:nth-of-type(#{$i}){
+      @extend .columns.medium-4;
+    }
+  }
+  @for $i from 7 through 12 {
+    &:nth-of-type(#{$i}){
+      display: none;
+    }
+  }
+}
+
+
+dl:nth-of-type(2){
+  @extend %row;
+}
+
+
+// eg class="data........"
+[class|=data]{
+  @extend .columns.medium-4;
+}
+
+input[value]{
+  outline: 1px solid red;
+  height: 35px;
+}
+
+/*-------------------------------------------*/
+
+.#{$outer-container}{
+}
+
+.#{$inner-container},
+textarea{
+}
+
+.#{$outer-container}{
+  a{
+    @extend button;
+  }
+}
+
+
+
+/*---------------------------------------------*/
+
+.#{$inner-container} {
+  $color: transparentize($black, 0.85);
+  @include box-shadow(10, 10, 2, $color);
+}
+
+.#{$inner-container},
+textarea{
+}
+
+/*---------------------------------------------*/
+
+input.#{$bg-white} {
+}
+
+
+
+/*-------------- FLEXBOX -----------------*/
+
+ol li{
+  @for $i from 1 through 3 {
+    &:nth-of-type(#{$i}){
+      order: #{$i};
+    }
+  }
+}
+
+dl dt,
+dl dd{
+  @for $i from 1 through 3 {
+    &:nth-of-type(#{$i}){
+      order: #{$i};
+    }
+  }
+  @for $i from 4 through 6 {
+    &:nth-of-type(#{$i - 3}){
+      order: #{$i - 3};
+    }
+  }
+  @for $i from 7 through 9 {
+    &:nth-of-type(#{$i - 6}){
+      order: #{$i - 6};
+    }
+  }
+  @for $i from 10 through 12 {
+    &:nth-of-type(#{$i - 9}){
+      order: #{$i - 9};
+    }
+  }
+}
+
+
+
+
+/*-------------- SELECTORS -----------------*/
+
+dt.editable,
+li.editable{
+  > div{
+    select{display: block;}
+    select,
+    a{
+    }
+  }
+  >div >select{
+  }
+}
+.editable > div select{ display: block; }
+
+/*--------------END -----------------*/
+
+
+dd{
+  dl{
+
+  }
+}
+
+
+
+ol.editable{
+  li{
+  }
+}
+
+dl{
+}
+
+dt.editable + dd{
+  dl{
+  }
+}
+
+
+li.editable{
+  >input{
+    +div{
+    }
+  }
+}
