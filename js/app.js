@@ -95,7 +95,7 @@ requirejs(['jquery', 'app/data', 'jquery-ui'],
             element = $(editable[0]);
             if (element.hasClass('editable')) {
               self._editorTarget = element;
-              self._uiControls(element);
+              //self._uiControls(element);
             }
           }
         }

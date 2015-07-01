@@ -41,18 +41,22 @@ define(['jquery'], function ($, VisualObject) {
         }
         break;
       case 'boolean':
-        var inpt = $('<input/>', {type: 'checkbox', class: 'data-value', checked: v, name: name}).on('change', function () {DataEdit.change(this)});
+        var inpt = $('<input/>', {type: 'checkbox', class: 'data-value data-type-bool', checked: v, name: name}).on('change', function () {DataEdit.change(this)});
         html.append(inpt);
         break;
       case 'number':
-        var inpt = $('<input/>', {type: 'number', class: 'data-value', value: v, name: name}).on('change keyup', function () {DataEdit.change(this)});
+        var inpt = $('<input/>', {type: 'number', class: 'data-value data-type-number', value: v, name: name}).on('change keyup', function () {DataEdit.change(this)});
         html.append(inpt);
         break;
       default:
-        var inpt = $('<input/>', {type: 'text', class: 'data-value', value: v, name: name}).on('change keyup', function () {DataEdit.change(this)});
+        var inpt = $('<input/>', {type: 'text', class: 'data-value data-type-text', value: v, name: name}).on('change keyup', function () {DataEdit.change(this)});
         html.append(inpt);
         break;
     }
+    /**
+     * Add a remove link
+     */
+    html.append($('<a/>', {class: 'action-remove'}));
     /**
      * Add append elements
      */
@@ -61,12 +65,16 @@ define(['jquery'], function ($, VisualObject) {
   };
 
   DataEdit.prototype._drawObject = function(parentName, o) {
-    var html = $('<dl/>', {class: 'editable data-value'});
+    var html = $('<dl/>', {class: 'editable data-value data-type-object'});
     $.each(o, function (property, value) {
       var name = parentName + '[' + property + ']',
           data = new DataEdit(name, value),
-          dt   = $('<dt/>', {class: 'editable', html: $('<input/>', {value: property}).on('change keyup', function () {$(this).trigger('schema-change');})}),
+          dt   = $('<dt/>', {class: 'editable', html: $('<input/>', {type: 'text', value: property, class: 'property-name'}).on('change keyup', function () {$(this).trigger('schema-change');})}),
           dl   = $('<dd/>', {html: data.draw()});
+      /**
+       * Add type selector for each element
+       */
+      dt.prepend(DataEdit.typeSelector(typeof value));
 
       html
         .append(dt)
@@ -87,7 +95,7 @@ define(['jquery'], function ($, VisualObject) {
 
     if (tag == 'dl') {
       var data = new DataEdit(name, value),
-          dt   = $('<dt/>', {class: 'editable', html: $('<input/>', {value: name}).on('change keyup', function () {$(this).trigger('schema-change');})}),
+          dt   = $('<dt/>', {class: 'editable', html: $('<input/>', {type: 'text', value: name, class: 'property-name'}).on('change keyup', function () {$(this).trigger('schema-change');})}),
           dd   = $('<dd/>', {html: data.draw()});
 
       parent
@@ -138,11 +146,12 @@ define(['jquery'], function ($, VisualObject) {
   };
 
   DataEdit.prototype._drawArray = function(parentName, a) {
-    var html = $('<ol/>', {class: 'editable data-value', 'data-name' : parentName});
+    var html = $('<ol/>', {class: 'editable data-value data-type-array', 'data-name' : parentName});
     $.each(a, function (i, value) {
       var name = parentName + '[]',
           data = new DataEdit(name, value),
           li   = $('<li/>', {class: 'editable', html: data.draw()});
+      li.prepend(DataEdit.typeSelector(typeof value));
       html
         .append(li);
     });
@@ -156,6 +165,7 @@ define(['jquery'], function ($, VisualObject) {
       var name = element.attr('data-name') + '[]',
           data = new DataEdit('', value),
           li   = $('<li/>', {class: 'editable', html: data.draw()});
+      li.prepend(DataEdit.typeSelector(typeof value));
       element
         .append(li);
     }
@@ -259,6 +269,22 @@ define(['jquery'], function ($, VisualObject) {
         break;
     }
     return data;
+  };
+
+  DataEdit.typeSelector = function(selected) {
+    var select = $('<select/>'),
+      types  = {
+        'string' : 'Text',
+        'object' : 'Object',
+        'array'  : 'Collection',
+        'number' : 'Number',
+        'boolean': 'Bool',
+        'null'   : 'Null'
+      };
+    $.each(types, function(value, label) {
+      select.append($('<option/>',{value: value, text: label}));
+    });
+    return select;
   };
 
   return DataEdit;

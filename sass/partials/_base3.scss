@@ -42,7 +42,7 @@ dl{
   @extend .row;
   dt,
   dt + dd{
-    @extend .columns.medium-6;
+//    @extend .columns.medium-6;
   }
 }
 
@@ -51,12 +51,12 @@ dl dt,
 dl dd{
   @for $i from 1 through 2 {
     &:nth-of-type(#{$i}){
-      @extend .columns.medium-6;
+//      @extend .columns.medium-6;
     }
   }
   @for $i from 3 through 5 {
     &:nth-of-type(#{$i}){
-      @extend .columns.medium-4;
+//      @extend .columns.medium-4;
     }
   }
   @for $i from 7 through 12 {
@@ -74,7 +74,7 @@ dl:nth-of-type(2){
 
 // eg class="data........"
 [class|=data]{
-  @extend .columns.medium-4;
+//  @extend .columns.medium-4;
 }
 
 input[value]{
