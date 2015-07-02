@@ -4549,10 +4549,17 @@ dl dd {
   dl dd:first-of-type {
     float: right; }
 
-body > form > div > div > dl > dd:nth-child(10) > dl {
+.schema-editor > dl > dd:nth-child(10) {
+  padding-left: 10px; }
+
+.schema-editor > div > dl > dd > dl > dd > input,
+.schema-editor > div > dl > dd:nth-child(10) > dl {
   margin-left: 10px; }
 
-.schema-editor dl > dd > dl > dt > select {
+.schema-editor > dl > dd:nth-child(10) > dl {
+  margin-left: 10px; }
+
+.schema-editor > dl > dd > dl > dt > select {
   width: 160px;
   outline: 1px solid red; }
 
