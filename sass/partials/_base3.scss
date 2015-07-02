@@ -2,13 +2,43 @@ $outer-container: "schema-editor";
 $inner-container: "view-port";
 //$dl: "editable data-value";
 $bg-white: "data-value";
+$pad: 20px;
 
 
 
 
 
 /*------------ PLACEHOLDERS  ---------------*/
-$pad: 20px;
+
+
+%gutter{
+  *, *:after, *:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+}
+
+
+
+
+%borderleft{
+  $color: #45B0D4;
+  border-left:{
+    style: inset;
+    color: transparentize(grayscale($color), 0.7);
+    width: 4px;
+  }
+}
+
+
+%dt{
+  /* overflow: auto; */
+  float: left;
+  width: 200px;
+}
+
+
 %row {
   margin: 0 0 $pad 0;
   &:after{
@@ -27,50 +57,87 @@ $pad: 20px;
     %columns-#{$i} {
       width: ((100 / 12) * $i) * 1%;
       clear: none;
+      float: left;
     }
   }
 }
 
 
 
-
-
-
-
-
-
-
 /*------------ MAIN STRUCTURE ---------------*/
 
+.view-port{
+  background-color: transparentize(lightblue, 0.5);
+  padding: 1%;
+  @extend %borderleft;
+  > dl{
+    $color: #45B0D4;
+    @extend %borderleft;
+    background-color:  transparentize(lightblue, 0.5);
+    padding: 10px;
+    }
+}
 
-
-
-
-#target { }
 
 .schema-editor {
+  width: 960px;
+  margin: 0 auto;
+  @extend %gutter;
   @extend %row;
-  background-color: rgba(blue, 0.15);
+  background-color: tint(#45B0D4, 10%);
   textarea{
     height: 75vh;
   }
 }
 
+.schema-editor {
 
-textarea { @extend %columns-6; }
-.view-port{ @extend %columns-6; }
+  select{
+    width: 105px;
+    float: left;
+    margin-right: 10px;
+  }
+  input{
+    width: 105px;
+  }
+}
+
+input[type="checkbox"]{
+  width: 100px;
+}
+
+
+.schema-editor a{
+  &:after{
+    content: "X";
+    color: red;
+  }
+}
+
+
+
+textarea, .view-port { @extend %columns-6; }
 
 dl,ol{
   @extend %row;
 }
 
-
-dt select,
-dt input{
-  @extend %columns-6;
-
+input.data-value{
+  width: 200px;
+  .data-type-number &{
+    width: 200px;
+  }
 }
 
+dl{
+  dt{
+    float: left;
+  }
+  dd{
+    width: 200px;
+    float: right;
+  }
+}
 
 dl dt,
 dl dd,
@@ -79,8 +146,12 @@ ol li{
   padding-left: 0;
 }
 
-dd ol{ @extend %row; }
-dd ol li{ @extend %columns-4; }
+
+li.editable > select,
+select + input {
+  width: 200px;
+}
+
 
 
 
@@ -89,119 +160,55 @@ dd ol li{ @extend %columns-4; }
 
 @mixin counter($i){
   &:nth-of-type(#{$i}){
-    outline: 1px solid #ff0000;
-    transition: scale(0.5, 0.5);
+//    outline: 1px solid #ff0000;
+//    transition: scale(0.5, 0.5);
   }
 }
 
 
-
-
-
-
-/*-------------------------------------------*/
-
-//dl dt,
-//dl dd,
-//ol li{
-//  @extend .columns;
-//  @for $i from 1 through 2 {
-//    &:nth-of-type(#{$i}){
-//      @extend .medium-6;
-//    }
-//  }
-//  @for $i from 3 through 5 {
-//    &:nth-of-type(#{$i}){
-//      @extend .medium-4;
-//    }
-//  }
-//  @for $i from 6 through 7 {
-//    &:nth-of-type(#{$i}){
-//      @extend .medium-6;
-//    }
-//  }
-//}
-
 /*-------------------------------------------*/
 
 
-// eg class="data........"
-[class|=data]{
-//  @extend .columns.medium-4;
-}
-
-input[value]{
-  outline: 1px solid red;
-  height: 35px;
-}
-
 /*-------------------------------------------*/
-
-.#{$outer-container}{
-}
-
-.#{$inner-container},
-textarea{
-}
-
-.#{$outer-container}{
-  a{
-    @extend button;
-  }
-}
-
-
-
-/*---------------------------------------------*/
 
 .#{$inner-container} {
   $color: transparentize($black, 0.85);
   @include box-shadow(10, 10, 2, $color);
 }
 
-.#{$inner-container},
-textarea{
-}
-
-/*---------------------------------------------*/
-
-input.#{$bg-white} {
-}
-
-
 
 /*-------------- FLEXBOX -----------------*/
 
-ol li{
-  @for $i from 1 through 3 {
-    &:nth-of-type(#{$i}){
-      order: #{$i};
-    }
-  }
-}
-
-dl dt,
-dl dd{
-  @for $i from 1 through 3 {
-    &:nth-of-type(#{$i}){
-      order: #{$i};
-    }
-  }
-  @for $i from 4 through 6 {
-    &:nth-of-type(#{$i - 3}){
-      order: #{$i - 3};
-    }
-  }
-  @for $i from 7 through 9 {
-    &:nth-of-type(#{$i - 6}){
-      order: #{$i - 6};
-    }
-  }
-  @for $i from 10 through 12 {
-    &:nth-of-type(#{$i - 9}){
-      order: #{$i - 9};
-    }
-  }
-}
-
+//ol li{
+//  @for $i from 1 through 3 {
+//    &:nth-of-type(#{$i}){
+//      order: #{$i};
+//    }
+//  }
+//}
+//
+//dl dt,
+//dl dd{
+//  @for $i from 1 through 3 {
+//    &:nth-of-type(#{$i}){
+//      order: #{$i};
+//    }
+//  }
+//  @for $i from 4 through 6 {
+//    &:nth-of-type(#{$i - 3}){
+//      order: #{$i - 3};
+//    }
+//  }
+//  @for $i from 7 through 9 {
+//    &:nth-of-type(#{$i - 6}){
+//      order: #{$i - 6};
+//    }
+//  }
+//  @for $i from 10 through 12 {
+//    &:nth-of-type(#{$i - 9}){
+//      order: #{$i - 9};
+//    }
+//  }
+//}
+//
 
