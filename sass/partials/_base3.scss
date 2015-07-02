@@ -108,9 +108,11 @@ input[type="checkbox"]{
 
 
 .schema-editor a{
+  float: left;
   &:after{
     content: "X";
     color: red;
+    padding: 15px;
   }
 }
 
@@ -123,9 +125,10 @@ dl,ol{
 }
 
 input.data-value{
-  width: 200px;
+  width: 160px;
+  float: left;
   .data-type-number &{
-    width: 200px;
+    width: 160px;
   }
 }
 
@@ -149,7 +152,7 @@ ol li{
 
 li.editable > select,
 select + input {
-  width: 200px;
+  width: 160px;
 }
 
 
@@ -178,37 +181,4 @@ select + input {
 
 
 /*-------------- FLEXBOX -----------------*/
-
-//ol li{
-//  @for $i from 1 through 3 {
-//    &:nth-of-type(#{$i}){
-//      order: #{$i};
-//    }
-//  }
-//}
-//
-//dl dt,
-//dl dd{
-//  @for $i from 1 through 3 {
-//    &:nth-of-type(#{$i}){
-//      order: #{$i};
-//    }
-//  }
-//  @for $i from 4 through 6 {
-//    &:nth-of-type(#{$i - 3}){
-//      order: #{$i - 3};
-//    }
-//  }
-//  @for $i from 7 through 9 {
-//    &:nth-of-type(#{$i - 6}){
-//      order: #{$i - 6};
-//    }
-//  }
-//  @for $i from 10 through 12 {
-//    &:nth-of-type(#{$i - 9}){
-//      order: #{$i - 9};
-//    }
-//  }
-//}
-//
 

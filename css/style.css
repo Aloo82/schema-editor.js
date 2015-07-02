@@ -4526,14 +4526,18 @@ BREAKPOINTS
 input[type="checkbox"] {
   width: 100px; }
 
-.schema-editor a:after {
-  content: "X";
-  color: red; }
+.schema-editor a {
+  float: left; }
+  .schema-editor a:after {
+    content: "X";
+    color: red;
+    padding: 15px; }
 
 input.data-value {
-  width: 200px; }
+  width: 160px;
+  float: left; }
   .data-type-number input.data-value {
-    width: 200px; }
+    width: 160px; }
 
 dl dt {
   float: left; }
@@ -4549,7 +4553,7 @@ ol li {
 
 li.editable > select,
 select + input {
-  width: 200px; }
+  width: 160px; }
 
 /*-------------------------------------------*/
 /*-------------------------------------------*/
