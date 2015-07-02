@@ -4516,12 +4516,14 @@ BREAKPOINTS
   .schema-editor textarea {
     height: 75vh; }
 
-.schema-editor select {
-  width: 105px;
-  float: left;
-  margin-right: 10px; }
-.schema-editor input {
-  width: 105px; }
+.schema-editor {
+  outline: 1px solid gray; }
+  .schema-editor select {
+    width: 105px;
+    float: left;
+    margin-right: 10px; }
+  .schema-editor input {
+    width: 105px; }
 
 input[type="checkbox"] {
   width: 100px; }
@@ -4543,7 +4545,19 @@ dl dt {
   float: left; }
 dl dd {
   width: 200px;
-  float: right; }
+  float: left; }
+  dl dd:first-of-type {
+    float: right; }
+
+body > form > div > div > dl > dd:nth-child(10) > dl {
+  margin-left: 10px; }
+
+.schema-editor dl > dd > dl > dt > select {
+  width: 160px;
+  outline: 1px solid red; }
+
+dl dd {
+  padding-left: 0px; }
 
 dl dt,
 dl dd,

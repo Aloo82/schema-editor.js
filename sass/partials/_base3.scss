@@ -91,6 +91,7 @@ $pad: 20px;
 }
 
 .schema-editor {
+  outline: 1px solid gray;
 
   select{
     width: 105px;
@@ -138,8 +139,25 @@ dl{
   }
   dd{
     width: 200px;
-    float: right;
+    float: left;
+    &:first-of-type{
+      float: right;
+    }
   }
+}
+
+body > form > div > div > dl > dd:nth-child(10) > dl{
+  margin-left: 10px;
+}
+
+.schema-editor dl > dd > dl > dt > select{
+  width: 160px;
+  outline: 1px solid red;
+}
+
+
+dl dd{
+  padding-left: 0px;
 }
 
 dl dt,
