@@ -80,7 +80,7 @@ $pad: 20px;
 
 
 .schema-editor {
-  width: 960px;
+  width: 1240px;
   margin: 0 auto;
   @extend %gutter;
   @extend %row;
@@ -148,16 +148,15 @@ dl{
 
 
 
-
-
-
+body > form > div > div > dl > dd:nth-child(10) > dl > dd:nth-child(2),
+.schema-editor > div > dl > dd:nth-child(10) > dl > dd:nth-child(2),
+.schema-editor > div > dl > dd:nth-child(12),
 .schema-editor > dl > dd:nth-child(10) {
   padding-left: 10px;
 }
 
 
 
-.schema-editor > div > dl > dd > dl > dd > input,
 .schema-editor > div > dl > dd:nth-child(10) > dl{
   margin-left: 10px;
 }

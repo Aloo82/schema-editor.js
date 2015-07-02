@@ -1,0 +1,8 @@
+%borderleft{
+  $color: #45B0D4;
+  border-left:{
+    style: inset;
+    color: transparentize(grayscale($color), 0.7);
+    width: 4px;
+  }
+}
