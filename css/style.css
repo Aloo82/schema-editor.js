@@ -545,6 +545,46 @@ tfoot td {
   font-style: italic;
   padding: 1.6rem 0.4rem; }
 
+select {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  border-radius: 0;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+);
+  background-position: 100% center;
+  background-repeat: no-repeat;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #cccccc;
+  color: rgba(0, 0, 0, 0.75);
+  padding: 0.5rem;
+  padding: 0.8rem; }
+  select:before {
+    content: 'hello ';
+    color: red; }
+
+@font-face {
+  font-family: 'icomoon';
+  src: url("../fonts/icomoon.eot?-ooqwqq");
+  src: url("../fonts/icomoon.eot?#iefix-ooqwqq") format("embedded-opentype"), url("../fonts/icomoon.ttf?-ooqwqq") format("truetype"), url("../fonts/icomoon.woff?-ooqwqq") format("woff"), url("../fonts/icomoon.svg?-ooqwqq#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+[class^="action-"], [class*=" action-"] {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.action-remove:after {
+  content: "\ea0f";
+  vertical-align: sub;
+  padding: 10px; }
+
 /* ------------------------ COLOURS ------------------------ */
 body {
   background-color: rgba(226, 242, 248, 0.35); }
@@ -563,7 +603,8 @@ dl, ol {
 
 dd ol,
 dd dl {
-  margin-left: 42px !important; }
+  margin-left: 42px !important;
+  margin-right: 15px !important; }
 
 li {
   border-bottom-color: rgba(255, 255, 255, 0.4);
@@ -593,11 +634,6 @@ dl input, dl select {
   margin-top: 10px;
   margin-left: 10px; }
 
-a::after {
-  content: 'X';
-  vertical-align: sub;
-  padding: 10px; }
-
 a {
   color: red;
   font-weight: bold;
@@ -611,23 +647,6 @@ a {
 
 dl ol {
   padding-left: 0; }
-
-select {
-  -webkit-appearance: none !important;
-  -moz-appearance: none !important;
-  border-radius: 0;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+);
-  background-position: 100% center;
-  background-repeat: no-repeat;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #cccccc;
-  color: rgba(0, 0, 0, 0.75);
-  padding: 0.5rem;
-  padding: 0.8rem; }
-  select:before {
-    content: 'hello ';
-    color: red; }
 
 ol {
   border-left-style: inset;
@@ -660,5 +679,22 @@ dl.data-type-object {
   border-left-style: inset;
   border-left-width: 5px;
   border-left-color: rgba(237, 237, 237, 0.4); }
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="week"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+select {
+  width: 125px; }
 
 /*# sourceMappingURL=style.css.map */
