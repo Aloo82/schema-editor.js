@@ -32,12 +32,16 @@ define(['jquery'], function ($, VisualObject) {
     switch (typeof v) {
       case 'object':
         if (Array.isArray(v)) {
-          html.append(this._drawArray(name, v));
+          html
+            .append(this._drawArray(name, v))
+            .append($('<a/>', {class: 'action-add'}));
         } else {
           /**
            * typeof null returns "object", ignore null values
            */
-          (v !== null) && html.append(this._drawObject(name, v));
+          (v !== null) && html
+                            .append(this._drawObject(name, v))
+                            .append($('<a/>', {class: 'action-add'}));
         }
         break;
       case 'boolean':
