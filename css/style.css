@@ -558,9 +558,13 @@ select {
   color: rgba(0, 0, 0, 0.75);
   padding: 0.5rem;
   padding: 0.8rem; }
-  select:before {
-    content: 'hello ';
-    color: red; }
+
+ol > li.editable:before {
+  content: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+);
+  background-position: 50% center;
+  /* display: block; */
+  background-repeat: no-repeat;
+  background-size: initial; }
 
 @font-face {
   font-family: 'icomoon';
@@ -580,7 +584,7 @@ select {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.action-remove:after {
+a.action-remove:after {
   content: "\ea0f";
   vertical-align: sub;
   padding: 10px; }
@@ -597,18 +601,33 @@ a.action-remove {
 
 a.action-add {
   background-color: #53BEDD;
+  padding: 1px 3px;
   border-color: #53BEDD;
   border-width: 5px;
   border-radius: 3px; }
+  a.action-add:hover {
+    background-color: #2aadd3;
+    border-color: #2aadd3;
+    -webkit-transition: border-color background-color 0.5s;
+    /* Safari */
+    transition: border-color background-color 0.5s;
+    cursor: pointer; }
   a.action-add:after {
     position: inherit;
     content: "add";
-    vertical-align: text-top;
-    padding: 4px; }
+    vertical-align: text-top; }
+
+.view-port a.action-add {
+  margin-left: 40px; }
 
 /* ------------------------ COLOURS ------------------------ */
-body {
-  background-color: rgba(226, 242, 248, 0.35); }
+ol {
+  border-left-style: inset;
+  border-left-width: 5px;
+  border-left-color: rgba(184, 212, 226, 0.15); }
+
+form > div {
+  overflow: auto; }
 
 dt, dd {
   display: inline;
@@ -619,7 +638,6 @@ dd:after {
   white-space: pre; }
 
 dl, ol {
-  background: rgba(173, 216, 230, 0.25);
   padding: 10px; }
 
 dd ol,
@@ -636,7 +654,7 @@ li {
   margin-left: 40px !important; }
 
 li.editable > select {
-  margin-left: 40px; }
+  margin-left: 20px; }
 li.editable dl + a {
   margin-left: 40px; }
 li.editable dl dd input {
@@ -644,11 +662,6 @@ li.editable dl dd input {
 
 dl dd ol li dl select {
   margin-left: 0px; }
-
-textarea {
-  height: auto;
-  width: 100%;
-  max-width: 100%; }
 
 dl input, dl select {
   margin-bottom: 10px;
@@ -665,9 +678,6 @@ dl ol {
   padding-left: 0; }
 
 ol {
-  border-left-style: inset;
-  border-left-width: 5px;
-  border-left-color: rgba(237, 237, 237, 0.4);
   list-style: none; }
 
 .schema-editor {
@@ -675,21 +685,24 @@ ol {
   margin: 0 auto; }
 
 .view-port {
-  outline: 1px solid rgba(128, 128, 128, 0.5); }
-  .view-port > dl {
-    border: none !important; }
-
-.view-port {
   max-width: 625px;
   float: left;
   margin-right: 15px; }
+  .view-port > dl {
+    border: none !important; }
 
 textarea {
+  width: 100%;
   max-width: 625px;
   float: left;
   margin-left: 15px;
   height: 90vh;
-  background-color: white; }
+  background-color: white;
+  border-style: hidden;
+  padding: 1.9rem;
+  color: grey;
+  -webkit-box-shadow: 5px 3px 15px rgba(51, 51, 51, 0.35);
+  box-shadow: 5px 3px 15px rgba(51, 51, 51, 0.35); }
 
 dl.data-type-object {
   border-left-style: inset;
@@ -713,5 +726,22 @@ input[type="color"],
 select {
   width: 125px;
   font-size: small; }
+
+body {
+  background-color: rgba(173, 216, 230, 0.15); }
+
+ol,
+dl > dd > dl {
+  background-color: rgba(173, 216, 230, 0.4); }
+
+li.editable > select + dl {
+  background-color: lightblue; }
+
+.view-port {
+  background-color: rgba(226, 242, 248, 0.45);
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  -webkit-box-shadow: 5px 3px 15px rgba(51, 51, 51, 0.35);
+  box-shadow: 5px 3px 15px rgba(51, 51, 51, 0.35); }
 
 /*# sourceMappingURL=style.css.map */

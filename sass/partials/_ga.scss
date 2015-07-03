@@ -1,12 +1,17 @@
 /* ------------------------ COLOURS ------------------------ */
 $max-width: 1280px;
 
-
-
-body{
-  background-color: transparentize( $primary-color, 0.65);
+%borderStyle{
+  border-left:{
+    style: inset;
+    width: 5px;
+    color: rgba(#B8D4E2, 0.15);
+  }
 }
 
+form > div {
+  overflow: auto;
+}
 
 dt, dd {
   display: inline;
@@ -19,7 +24,7 @@ dd:after {
 }
 
 dl, ol {
-  background: transparentize(lightblue, 0.75);
+
   padding: 10px;
 }
 
@@ -50,7 +55,7 @@ li {
 
 li.editable{
   > select{
-    margin-left: 40px;
+    margin-left: 20px;
   }
   dl + a{
     margin-left: 40px;
@@ -67,11 +72,6 @@ dl dd ol li dl{
 }
 
 
-textarea{
-  height: auto;
-  width: 100%;
-  max-width: 100%;
-}
 
 
 dl input, dl select {
@@ -100,44 +100,38 @@ dl ol{
   padding-left: 0;
 }
 
-
-
 ol{
-  border-left:{
-    style: inset;
-    width: 5px;
-    color: transparentize(grayscale( $primary-color), 0.6);
-  }
+  @extend %borderStyle;
   list-style: none;
 }
 
 .schema-editor{
-
   max-width: $max-width;
   margin: 0 auto;
 }
 
 .view-port{
-  outline: 1px solid transparentize(gray, 0.5);
+  max-width: ($max-width / 2) - 15px;
+  float: left;
+  margin-right: 15px;
   > dl{
     border: none !important;
   }
 }
 
 
-.view-port{
-  max-width: ($max-width / 2) - 15px;
-  float: left;
-  margin-right: 15px;
-}
-
-
 textarea{
+  width: 100%;
   max-width: ($max-width / 2) - 15px;
   float: left;
   margin-left: 15px;
   height: 90vh;
   background-color: white;
+  border-style: hidden;
+  padding: 1.9rem;
+  color: grey;
+  -webkit-box-shadow: 5px 3px 15px transparentize(#333, 0.65);
+  box-shadow: 5px 3px 15px transparentize(#333, 0.65);
 }
 
 dl.data-type-object{
@@ -167,6 +161,30 @@ input[type="color"],
 select {
   width: 125px;
   font-size: small;
+}
+
+body{
+  background-color: transparentize( lightblue, 0.85);
+}
+
+
+ol,
+dl > dd > dl{
+  background-color: transparentize( lightblue, 0.6);
+}
+
+
+li.editable > select + dl{
+  background-color: lightblue;
+}
+
+
+.view-port{
+  background-color: transparentize( $primary-color, 0.55);
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  -webkit-box-shadow: 5px 3px 15px transparentize(#333, 0.65);
+  box-shadow: 5px 3px 15px transparentize(#333, 0.65);
 }
 
 

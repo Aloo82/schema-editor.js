@@ -23,7 +23,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.action-remove:after {
+a.action-remove:after {
   content: "\ea0f";
   vertical-align: sub;
   padding: 10px;
@@ -43,15 +43,29 @@ a.action-remove{
 a.action-add{
   $btn-color: #53BEDD;
   background-color: $btn-color;
+  padding: 1px 3px;
   border:{
     color: $btn-color;
     width: 5px;
     radius: 3px;
   }
+  &:hover{
+    background-color: darken($btn-color, 10%);
+    border-color: darken($btn-color, 10%);
+    -webkit-transition: border-color background-color 0.5s; /* Safari */
+    transition: border-color background-color 0.5s;
+    cursor: pointer;
+  }
   &:after {
     position: inherit;
     content: "add";
     vertical-align: text-top;
-    padding: 4px;
+  }
+}
+
+
+.view-port{
+  a.action-add{
+    margin-left: 40px;
   }
 }
