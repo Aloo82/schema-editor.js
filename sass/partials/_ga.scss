@@ -88,13 +88,7 @@ dl input, dl select {
 
 
 a{
-  color: red;
-  font:{
-    weight: bold;
-    family: sans-serif;
-  }
   &:hover{
-    color: darkred;
     -webkit-transition: color 0.5s; /* Safari */
     transition: color 0.5s;
     cursor: pointer;
@@ -172,6 +166,7 @@ input[type="tel"],
 input[type="color"],
 select {
   width: 125px;
+  font-size: small;
 }
 
 

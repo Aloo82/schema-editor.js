@@ -28,3 +28,30 @@
   vertical-align: sub;
   padding: 10px;
 }
+
+a.action-remove{
+  color: rgba(darkred, 0.15);
+  font-size: x-small;
+  &:hover{
+    color: rgba(darkred, 1);
+    -webkit-transition: color 0.5s; /* Safari */
+    transition: color 0.5s;
+    cursor: pointer;
+  }
+}
+
+a.action-add{
+  $btn-color: #53BEDD;
+  background-color: $btn-color;
+  border:{
+    color: $btn-color;
+    width: 5px;
+    radius: 3px;
+  }
+  &:after {
+    position: inherit;
+    content: "add";
+    vertical-align: text-top;
+    padding: 4px;
+  }
+}

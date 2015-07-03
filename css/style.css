@@ -585,6 +585,27 @@ select {
   vertical-align: sub;
   padding: 10px; }
 
+a.action-remove {
+  color: rgba(139, 0, 0, 0.15);
+  font-size: x-small; }
+  a.action-remove:hover {
+    color: darkred;
+    -webkit-transition: color 0.5s;
+    /* Safari */
+    transition: color 0.5s;
+    cursor: pointer; }
+
+a.action-add {
+  background-color: #53BEDD;
+  border-color: #53BEDD;
+  border-width: 5px;
+  border-radius: 3px; }
+  a.action-add:after {
+    position: inherit;
+    content: "add";
+    vertical-align: text-top;
+    padding: 4px; }
+
 /* ------------------------ COLOURS ------------------------ */
 body {
   background-color: rgba(226, 242, 248, 0.35); }
@@ -634,16 +655,11 @@ dl input, dl select {
   margin-top: 10px;
   margin-left: 10px; }
 
-a {
-  color: red;
-  font-weight: bold;
-  font-family: sans-serif; }
-  a:hover {
-    color: darkred;
-    -webkit-transition: color 0.5s;
-    /* Safari */
-    transition: color 0.5s;
-    cursor: pointer; }
+a:hover {
+  -webkit-transition: color 0.5s;
+  /* Safari */
+  transition: color 0.5s;
+  cursor: pointer; }
 
 dl ol {
   padding-left: 0; }
@@ -695,6 +711,7 @@ input[type="search"],
 input[type="tel"],
 input[type="color"],
 select {
-  width: 125px; }
+  width: 125px;
+  font-size: small; }
 
 /*# sourceMappingURL=style.css.map */
